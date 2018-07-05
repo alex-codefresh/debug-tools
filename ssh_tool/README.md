@@ -35,7 +35,7 @@ You need to set 2 environment variables for your pipeline:
 
 **$PUBL_KEY** - this is a **base64** hash of your **public SSH key**. You can retrieve it by running such command in your terminal:
 
-`cat ~/.ssh/id_rsa.pub | base64 d | tr -d '\n'`
+`cat ~/.ssh/id_rsa.pub | base64 | tr -d '\n'`
 
 ## Requirements
 
