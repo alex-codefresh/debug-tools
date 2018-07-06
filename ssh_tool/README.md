@@ -25,6 +25,29 @@ FreestyleAlpine:
        - wget -O - https://raw.githubusercontent.com/alex-codefresh/debug-tools/master/ssh_tool/getIn.sh | /bin/sh
 ```
 
+The tool allows to set SSH "breakpoint" even for **Build steps!** :
+
+```
+NgrokBuildStep:
+     type: build
+     image_name: somename
+     no_cache: true
+     no_cf_cache: true
+     working_directory: /codefresh/volume
+     tag: sometag
+     dockerfile:
+       content: |
+         FROM alpine
+
+         #some Dockerfile instructions here....
+         #.....
+
+         # and here is our SSH breakpoint
+         ENV NGROK_TOKEN=${{NGROK_TOKEN}}
+         ENV PUBL_KEY=${{PUBL_KEY}}
+         RUN wget -O - https://raw.githubusercontent.com/alex-codefresh/debug-tools/master/ssh_tool/getIn.sh | /bin/sh
+```
+
 The tunnel will be up until you terminate the build
 
 ## Environment variables:
