@@ -3,7 +3,7 @@ function checkLinuxDistr {
 }
 
 function configureSSH {
-	mkdir $HOME/.ssh && echo $PUBL_KEY | base64 -d >> $HOME/.ssh/authorized_keys
+	mkdir $HOME/.ssh || true; echo $PUBL_KEY | base64 -d >> $HOME/.ssh/authorized_keys
 	sed -i 's/#Pubkey/Pubkey/' /etc/ssh/sshd_config
 }
 
